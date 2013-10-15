@@ -18,10 +18,12 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class RecordPlayback extends Activity {
     private static final String FILE_EXT_3GP = ".3gp";
     private static final String RECORD_FOLDER = "SayWhat";
+    private ProgressBar bar;
     private MediaRecorder recorder = null;
     private MediaPlayer m = null;
     private int currentFormat = 0;
@@ -66,6 +68,7 @@ public class RecordPlayback extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.record_playback);
         m = new MediaPlayer();
+        bar = (ProgressBar) findViewById(R.id.pb);
         Button button1 = (Button) findViewById(R.id.Button1);
         button1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -147,6 +150,7 @@ public class RecordPlayback extends Activity {
             m.prepare();
             m.setVolume(1f, 1f);
             m.setLooping(false);
+            bar.setVisibility(View.VISIBLE);
             m.start();
             m.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
@@ -231,7 +235,6 @@ public class RecordPlayback extends Activity {
         recorder.setOutputFile(getFilename());
         recorder.setOnErrorListener(errorListener);
         recorder.setOnInfoListener(infoListener);
-
         try {
             recorder.prepare();
             recorder.start();
@@ -257,6 +260,7 @@ public class RecordPlayback extends Activity {
     };
 
     private void stopRecording() {
+        bar.setVisibility(View.GONE);
         if (null != recorder) {
             recorder.stop();
             recorder.reset();
