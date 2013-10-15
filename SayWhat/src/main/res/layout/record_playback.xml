@@ -17,6 +17,7 @@
             android:background="@drawable/button_green"
             android:layout_margin="1dp"
             />
+
         <Button
             android:id="@+id/Button2"
             android:layout_width="0dp"
@@ -51,4 +52,5 @@
             />
 
     </LinearLayout>
+
 </LinearLayout>
