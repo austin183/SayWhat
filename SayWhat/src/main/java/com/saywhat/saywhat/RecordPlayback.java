@@ -53,14 +53,9 @@ public class RecordPlayback extends Activity {
                 if (descriptor != null)
                 {
                     playRecordingSound(descriptor);
-                    try {
-                        wait(descriptor.getLength());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
 
-                startRecording();
+                //startRecording();
             }
         }
     };
@@ -158,6 +153,7 @@ public class RecordPlayback extends Activity {
                 @Override
                 public void onCompletion(MediaPlayer m) {
                     m.reset();
+                    startRecording();
                 }
 
             });
