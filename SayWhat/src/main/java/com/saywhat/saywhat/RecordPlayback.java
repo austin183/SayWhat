@@ -56,8 +56,6 @@ public class RecordPlayback extends Activity {
                 {
                     playRecordingSound(descriptor);
                 }
-
-                //startRecording();
             }
         }
     };
